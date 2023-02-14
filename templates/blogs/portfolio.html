@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5 mb-5 light-mode-text animated-text">
+    <h1>Projects</h1>
+    <div id="repositories" class="row"></div>
+</div>
+
+<script>
+    const username = 'Waji-97';
+    const url = `https://api.github.com/users/${username}/repos`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const repositories = data;
+        const repositoryContainer = document.getElementById('repositories');
+
+        for (const repository of repositories) {
+          repositoryContainer.innerHTML += `
+            <div class="col-lg-4 mt-5">
+              <a href="${repository.html_url}" class="text-decoration-none">
+                <div class="card" style="width: 25rem;">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRQi-P_talwhhpYU-hok0qPVGikDJHcOzBkA&usqp=CAU" class="card-img-top" alt="...">
+                  <div class="card-body" style="color: black;">
+                    <h5 class="card-title"><b>${repository.name}</b></h5>
+                    <p class="card-text">${repository.description}</p>
+                    <p class="card-text">🐱‍👤 Go to Github!</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          `;
+        }
+      });
+</script>
+
+<style>
+    .card {
+        transition: all .2s ease-in-out;
+      }
+      
+      .card:hover {
+        box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
+        transform: scale(1.05);
+      }
+      
+</style>
+
+
+{% endblock %}

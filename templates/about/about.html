@@ -1,0 +1,45 @@
+{%extends 'index.html'%}
+{%block content%}
+<div class="container mt-5 mb-5 light-mode-text animated-text">
+  <section class="jumbotron text mb-5 mt-5">
+    <h1 class="bold">About me</h1>
+    <p class="lead">Hi there visitor!😀 My name is Wajhat Syed - you can call me 'Waji'. I'm a graduate from the University of the People, Pasadena/California where I earned my Associate of Computer Sciences degree in 2023. I'm excited to start my career as a junior Cloud Engineer/Architect and put my skills and knowledge to the test. Technology has always been a huge passion of mine, which is why I love keeping up with the latest innovations and advancements in the field. In my free time, I enjoy playing online games like Dota 2, League of Legends, and RPG games. But my ultimate goal is to become an expert in the IT industry and be able to give back by teaching others what I've learned and experienced.
+      <br>
+      Before starting my journey in IT, I worked for two years as a customer service representative. This experience taught me a lot about how to communicate effectively, stay calm under pressure, and solve problems for customers. I'm confident that these skills will come in handy as I navigate my career in IT. So, whether I'm catching up on the latest tech news or helping a customer resolve an issue, I'm always eager to learn and grow as a professional.</p>
+      <a href="https://drive.google.com/u/0/uc?id=1gC6e4mkf-TQo6Hl2gNH_11At5rYH0OZ6&export=download">
+        <button type="button" class="btn btn-light mt-4">My Resume</button>
+      </a>
+      <a href="https://dev.to/waji97" target="_blank">
+        <button class="btn-rounded btn btn-light mt-4">Dev.to</button>
+      </a>
+      <a href="https://github.com/Waji-97" target="_blank">
+        <button class="btn-rounded btn btn-light mt-4">GitHub</button>
+      </a>
+      <a href="https://www.linkedin.com/in/syedwaji" target="_blank">
+        <button class="btn-rounded btn btn-light mt-4">LinkedIn</button>
+      </a>
+      <a href="https://www.upwork.com/freelancers/~017ea4d56ba00479da" target="_blank">
+        <button class="btn-rounded btn btn-light mt-4">Upwork</button>
+      </a>
+</section>
+
+
+<section class="jumbotron text">
+  <h1 class="bold">Leave a message!</h1>
+  <form method="post">
+    {% csrf_token %}
+  <div class="mb-3 mt-5">
+    <label for="name">Your Name:</label>
+    <input type="text" name="name" id="name" class="form-control">
+  </div>
+    <label for="email">Your Email:</label>
+    <input type="email" name="email" id="email" class="form-control">
+  <div class="mb-3 mt-5">
+    <label for="message">Message:</label>
+    <textarea name="message" id="message" class="form-control" rows="15" cols="100"></textarea>
+  </div>
+    <button type="submit" class="btn btn-secondary "value="Send">Send</button>
+</form>
+</section>
+</div>
+{%endblock%}

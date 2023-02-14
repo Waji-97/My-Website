@@ -1,0 +1,52 @@
+{%extends 'index.html'%}
+{%block content%}
+
+<div id="typing-text" class="light-mode-text animated-text">
+  <h1>Hello👋</h1>
+  <p>My name is Wajhat Syed</p>
+  <p>💎Welcome to my portfolio website💎</p>
+</div>
+
+<script>
+  const typingText = document.getElementById("typing-text");
+  typingText.classList.add("animate-typing");
+</script>
+
+<style>
+
+  #typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    line-height: 1.5; 
+  }
+
+  @keyframes animate-typing {
+      0% { width: 0; }
+      100% { width: 100%; }
+  }
+  #typing-text h1 {
+    font-weight: 1000;
+    font-size: 7em;
+  }
+
+  #typing-text p {
+      font-size: 2.3em;
+  }
+
+  @media screen and (max-width: 600px) {
+    #typing-text h1 {
+        font-size: 1.5em;
+    }
+    #typing-text p {
+        font-size: 1.2em;
+    }
+  }
+</style>
+
+{%endblock%}
