@@ -4,5 +4,5 @@
 
 The website is hosted by an AWS EC2 instance on a Apache Server.
 
-<a href="http://waji.website">Click here</a> to visit my website!
+<a href="http://www.waji.website">Click here</a> to visit my website!
 
