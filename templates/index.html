@@ -9,29 +9,24 @@
     <title>Waji</title>
     <link rel="icon" href="https://w7.pngwing.com/pngs/946/794/png-transparent-letter-case-english-alphabet-blackletter-w-letter-angle-text-logo-thumbnail.png"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $('.animated-text').fadeIn(2000);
-      });
-    </script>
     <style>
-
       body {
         font-family: 'Lora', serif;
-        font-weight: 600;
+        font-weight: 600;        
       }
       
       .animated-text {
         display: none; 
       }
-
-      .bg-img{
-      background-color: #24292e;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
+      
+      .bg-img {
+        background-color: #24292e;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
       }
+      
       .middle {
         position: absolute;
         top: 50%;
@@ -49,27 +44,26 @@
         background-color: #24292e;
         color: #ffffff;
       }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body class="light-mode">    
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-      <ul class="menu-items">
-        <li id="home" class="{% if request.path == '/' %}active{% endif %}"><a href="/">Home</a></li>
-        <li id="about" class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'base:about' %}">About</a></li>
-        <li id="projects" class="{% if request.path == '/portfolio/' %}active{% endif %}"><a href="{% url 'base:portfolio' %}">Projects</a></li>
-        <li id="blogs" class="{% if request.path == '/blogs/' %}active{% endif %}"><a href="{% url 'blogs:index' %}">Blogs</a></li>
-      </ul>
-      <button id="mode-switch-btn">👾</button>
-    </nav>
-    <style>
+      
+      .light-mode nav * {
+        color: #000000;
+      }
+      
+      .dark-mode nav * {
+        color: #ffffff;
+      }
+      
+      .dark-mode nav ul li a {
+        color: #fff;
+      }
+      
       nav {
-        background-color: #24292e;
         width: 100%;
-        height: 60px;
+        height: 75px;
         display: flex;
         align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
       }
       
       nav ul {
@@ -128,11 +122,43 @@
         padding: 0;
       }
       
+      .light-mode nav ul li a:hover::before,
+      .light-mode nav ul li.active a::before {
+        background-color: #000;
+      }
+      
+      .dark-mode nav ul li a:hover::before,
+      .dark-mode nav ul li.active a::before {
+        background-color: #fff;
+      }
+      
+      .light-mode nav ul li a:hover,
+      .light-mode nav ul li.active a {
+        color: #000;
+      }
+
+      .dark-mode nav ul li a:hover,
+      .dark-mode nav ul li.active a {
+        color: #fff;
+      }      
     </style>
-    
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="light-mode">    
+
+    <nav class="nav justify-content-center">
+      <ul class="menu-items">
+        <li id="home" class="{% if request.path == '/' %}active{% endif %}"><a href="/">Home</a></li>
+        <li id="about" class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'base:about' %}">About</a></li>
+        <li id="projects" class="{% if request.path == '/portfolio/' %}active{% endif %}"><a href="{% url 'base:portfolio' %}">Projects</a></li>
+        <li id="blogs" class="{% if request.path == '/blogs/' %}active{% endif %}"><a href="{% url 'blogs:index' %}">Blogs</a></li>
+      </ul>
+      <button id="mode-switch-btn">👾</button>
+    </nav>
+ 
 {%block content%}
 {%endblock%}
+
 <script>
   const modeSwitchBtn = document.getElementById('mode-switch-btn');
   const body = document.body;
@@ -154,8 +180,10 @@
   }
   
   modeSwitchBtn.addEventListener('click', switchMode);
+
+  $(document).ready(function() {
+    $('.animated-text').fadeIn(2000);
+  });
 </script>
-
-
 </body>
 </html>
