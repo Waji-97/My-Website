@@ -7,32 +7,38 @@
 </div>
 
 <script>
-    const username = 'Waji-97';
-    const url = `https://api.github.com/users/${username}/repos`;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const repositories = data;
-        const repositoryContainer = document.getElementById('repositories');
-
-        for (const repository of repositories) {
-          repositoryContainer.innerHTML += `
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-5">
-              <a href="${repository.html_url}" class="text-decoration-none">
-                <div class="card" style="width: 25rem;">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRQi-P_talwhhpYU-hok0qPVGikDJHcOzBkA&usqp=CAU" class="card-img-top" alt="...">
-                  <div class="card-body" style="color: black;">
-                    <h5 class="card-title"><b>${repository.name}</b></h5>
-                    <p class="card-text">${repository.description}</p>
-                    <p class="card-text">🐱‍👤 Go to Github!</p>
-                  </div>
+  const username = 'Waji-97';
+  const url = `https://api.github.com/users/${username}/repos`;
+  
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const repositories = data;
+      const repositoryContainer = document.getElementById('repositories');
+  
+      for (const repository of repositories) {
+        let topics = repository.topics.map((topic) => {
+          return `<span class="badge bg-secondary">${topic}</span>`;
+        }).join("");
+  
+        repositoryContainer.innerHTML += `
+          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-5">
+            <a href="${repository.html_url}" class="text-decoration-none">
+              <div class="card" style="width: 25rem;">
+                <div class="card-body" style="color: black;">
+                  <h5 class="card-title"><b>${repository.name}</b></h5>
+                  <p class="card-text">${repository.description}</p>
+                  <div>${topics}</div>
+                  <br>
+                  <p class="card-text">🐱‍👤 Go to Github!</p>
                 </div>
-              </a>
-            </div>
-          `;
-        }
-      });
+              </div>
+            </a>
+          </div>
+        `;
+      }
+    });
+  
 </script>
 
 <style>
