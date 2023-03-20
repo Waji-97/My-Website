@@ -21,6 +21,28 @@
 <br><br>
 
 <section class="jumbotron text">
+  <h1 class="bold">Skillsets</h1>
+    <br><br><br><br>
+    <div class="image-grid">
+      <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/bootstrap-4-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/centos-1-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/docker-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/jenkins-1-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://blogs.vmware.com/cloudprovider/files/2019/04/og-image-8b3e4f7d-blog-aspect-ratio.png" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/prometheus-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+      <img src="https://api.mogenius.com/file/id/6e65ab41-714f-4382-a843-eab853b99278" alt="" height="100px" class="hover-image">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/elastic-stack-logo-png-transparent.png" alt="" height="100px" class="hover-image">
+    </div>
+  </section>
+
+<br><br><br><br>
+
+<section class="jumbotron text">
   <h1 class="bold">Leave a message!</h1>
   <form method="post" onkeyup="checkForm()">
     {% csrf_token %}
@@ -39,6 +61,20 @@
 </section>
 </div>
 
+<style>
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .hover-image:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+</style>
 <script type="text/javascript">
   function checkForm() {
     var name = document.getElementById('name').value;
