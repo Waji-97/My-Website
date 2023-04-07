@@ -1,57 +1,68 @@
 {% extends 'index.html' %}
 {% block content %}
 <div class="container mt-5 mb-5 light-mode-text animated-text">
-    <h1>Projects ✨</h1>
-    <p>A selection of projects I've worked on, as a student working towards a cloud specialist</p>
-    <div id="repositories" class="row"></div>
+  <h1>Projects ✨</h1>
+  <p>A selection of projects I've worked on, as a student working towards a cloud specialist</p>
+  <div id="repositories" class="row"></div>
 </div>
 
 <script>
-  const username = 'Waji-97';
-  const url = `https://api.github.com/users/${username}/repos`;
+const projects = [
+  {
+    name: 'PROmet On-Premise Project',
+    description: 'On-Premise 3 tier Architecture project carried out by our team during the Cloud Bootcamp',
+    topics: ['Django', 'HAproxy', 'Apache', 'MariaDB', 'GlusterFS'],
+    imageUrl: 'https://www.finereport.com/en/wp-content/uploads/2020/02/2020022703I.png',
+    githubUrl: "https://github.com",
+    docUrl: "https://drive.google.com/file/d/1Kk_EH54jcTXQE-BoMq7W2TunMelmYSa1/view?usp=sharing"
+  },
+  {
+    name: 'PROmet Cloud Migration Project',
+    description: 'AWS Cloud 3 tier Architecture project carried out by our team during the Cloud Bootcamp',
+    topics: ['AWS services', 'Grafana', 'Jenkins', 'Terraform'],
+    imageUrl: 'https://serverguy.com/wp-content/uploads/2017/05/maxresdefault-e1557743168984.jpg',
+    githubUrl: "https://github.com",
+    docUrl: "https://drive.google.com/file/d/1XoZwLiCMbOYlggtrSxm0afdhvAbhxAMp/view?usp=sharing"
+  },
   
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const repositories = data;
-      const repositoryContainer = document.getElementById('repositories');
-  
-      for (const repository of repositories) {
-        let topics = repository.topics.map((topic) => {
-          return `<span class="badge bg-secondary">${topic}</span>`;
-        }).join("");
-  
-        repositoryContainer.innerHTML += `
-          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-5">
-            <a href="${repository.html_url}" class="text-decoration-none">
-              <div class="card" style="width: 25rem;">
-                <div class="card-body" style="color: black;">
-                  <h5 class="card-title"><b>${repository.name}</b></h5>
-                  <p class="card-text">${repository.description}</p>
-                  <div>${topics}</div>
-                  <br>
-                  <p class="card-text">🐱‍👤 Go to Github!</p>
-                </div>
-              </div>
-            </a>
+];
+
+const repositoryContainer = document.getElementById('repositories');
+
+for (const project of projects) {
+  let topics = project.topics.map((topic) => {
+    return `<span class="badge bg-secondary">${topic}</span>`;
+  }).join("");
+
+  repositoryContainer.innerHTML += `
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-5">
+        <div class="card" style="width: 25rem;">
+          <img src="${project.imageUrl}" class="card-img-top" alt="Project Image" style="height: 15rem;">
+          <div class="card-body" style="color: black;">
+            <h5 class="card-title"><b>${project.name}</b></h5>
+            <p class="card-text">${project.description}</p>
+            <div>${topics}</div>
+            <br>
+            <a href="${project.githubUrl}" class="btn btn-info" style="text-decoration: none;">Go to Github</a>
+            <a href="${project.docUrl}" class="btn btn-secondary" style="text-decoration: none;">Read Documentation</a>
           </div>
-        `;
-      }
-    });
-  
+        </div>
+      </a>
+    </div>
+  `;
+}
 </script>
 
 <style>
-    .card {
-        transition: all .2s ease-in-out;
-      }
-      
-      .card:hover {
-        box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
-        transform: scale(1.05);
-      }
-      
+  .card {
+      transition: all .2s ease-in-out;
+    }
+    
+    .card:hover {
+      box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.2);
+      transform: scale(1.05);
+    }
+    
 </style>
-
 
 {% endblock %}
