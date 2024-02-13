@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponse
+from decouple import config
 import requests
 
 
 def index(request):
     headers = {
-        'api-key': '<dev.to api key>',
+        'api-key': config('API-KEY', cast=str),
     }
     response = requests.get('https://dev.to/api/articles/me', headers=headers)
 

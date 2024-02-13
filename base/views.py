@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from decouple import config
 import smtplib
 import requests
 
@@ -17,8 +18,8 @@ def email_form(request):
         message = request.POST.get('message')
         
         msg = MIMEMultipart()
-        msg['From'] = '<Sender Email>'
-        msg['To'] = '<Receiver Email>'
+        msg['From'] = 'wajiwos14@gmail.com'
+        msg['To'] = 'wajiwos14@gmail.com'
         msg['Subject'] = 'New Message From: ' + name
         
         msg.attach(MIMEText(message, 'plain'))
@@ -26,7 +27,7 @@ def email_form(request):
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login("<Sender-Email>", "<Sender-Password>")
+        server.login(config('ID', cast=str), config('PASS', cast=str))
         server.send_message(msg)
         server.quit()
 
@@ -41,7 +42,7 @@ def portfolio(request):
 
 def my_github_repos(request):
 
-    response = requests.get('<github api>')
+    response = requests.get(config('GIT-KEY', cast=str))
     repos = response.json()
     
     return render(request, 'blogs/portfolio.html', {'repos': repos})
